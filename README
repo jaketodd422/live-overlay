@@ -1,0 +1,22 @@
+This overlay is just for live (git,svn,cvs,hg,et cetera) ebuilds. It was
+inspired by my want for the bleeding-edge versions of the free software I use
+the most.
+
+All of the ebuilds here have an active upstream and are not going to be patched.
+There's no reason to patch a piece of software that has an active upstream, as
+it's constantly changing.
+
+Ebuilds use EAPI 2.
+
+Ebuild list:
+Name					Status
+------------------------------
+dev-util/git-9999		Done
+net-im/pidgin-9999		Not written yet
+net-irc/irssi-9999		Not written yet
+sys-apps/coreutils-9999 In progress
+sys-devel/binutils-9999 Not written yet
+sys-devel/gcc-9999		Not written yet	
+sys-devel/llvm-9999		Not written yet
+sys-devel/clang-9999	Not written yet
+www-client/uzbl-9999	not written yet
