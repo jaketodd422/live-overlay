@@ -4,8 +4,7 @@
 
 EAPI=2
 
-inherit toolchain-funcs eutils elisp-common perl-module bash-completion
-[ "$PV" == "9999" ] && inherit git
+inherit toolchain-funcs eutils elisp-common perl-module bash-completion git
 
 MY_PV="${PV/_rc/.rc}"
 MY_P="${PN}-${MY_PV}"
@@ -14,23 +13,15 @@ DOC_VER=${MY_PV}
 
 DESCRIPTION="GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team"
 HOMEPAGE="http://www.git-scm.com/"
-if [ "$PV" != "9999" ]; then
-	SRC_URI="mirror://kernel/software/scm/git/${MY_P}.tar.bz2
-			mirror://kernel/software/scm/git/${PN}-manpages-${DOC_VER}.tar.bz2
-			doc? ( mirror://kernel/software/scm/git/${PN}-htmldocs-${DOC_VER}.tar.bz2 )"
-else
-	SRC_URI="mirror://kernel/software/pub/scm/git/${PN}-manpages-1.6.3.tar.bz2"
-	EGIT_BRANCH="master"
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
-	# EGIT_REPO_URI="http://www.kernel.org/pub/scm/git/git.git"
-fi
+SRC_URI="mirror://kernel/software/pub/scm/git/${PN}-manpages-1.6.3.tar.bz2"
+EGIT_BRANCH="master"
+EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="curl cgi doc emacs gtk iconv mozsha1 perl ppcsha1 tk threads webdav xinetd cvs subversion"
 
-# Common to both DEPEND and RDEPEND
 CDEPEND="
 	!app-misc/git
 	dev-libs/openssl
@@ -56,15 +47,11 @@ RDEPEND="${CDEPEND}
 
 DEPEND="${CDEPEND}"
 
-# These are needed to build the docs
-if [ "$PV" == "9999" ]; then
-	DEPEND="${DEPEND}
-		doc?    (
-			app-text/asciidoc
-			app-text/xmlto
-			app-text/docbook2X
-		)"
-fi
+DEPEND="${DEPEND}
+	doc? ( app-text/asciidoc
+		   app-text/xmlto
+		   app-text/docbook2X
+	)"
 
 SITEFILE=50${PN}-gentoo.el
 S="${WORKDIR}/${MY_P}"
@@ -85,8 +72,6 @@ pkg_setup() {
 	fi
 }
 
-# This is needed because for some obscure reasons future calls to make don't
-# pick up these exports if we export them in src_unpack()
 exportmakeopts() {
 	local myopts
 
@@ -130,13 +115,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Noperl is being merged to upstream as of 2009/04/05
-	#epatch "${FILESDIR}"/20090305-git-1.6.2-noperl.patch
-
-	# GetOpt-Long v2.38 is strict
-	# Merged in 1.6.3 final 2009/05/07
-	#epatch "${FILESDIR}"/20090505-git-1.6.2.5-getopt-fixes.patch
-
 	sed -i \
 		-e 's:^\(CFLAGS =\).*$:\1 $(OPTCFLAGS) -Wall:' \
 		-e 's:^\(LDFLAGS =\).*$:\1 $(OPTLDFLAGS):' \
