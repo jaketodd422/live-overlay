@@ -9,14 +9,14 @@ it's constantly changing.
 Ebuilds use EAPI 2.
 
 Ebuild list:
-Name					Status
+Name                    Status
 ------------------------------
-dev-util/git-9999		Done
-net-im/pidgin-9999		Not written yet
-net-irc/irssi-9999		Not written yet
+dev-util/git-9999       Done
+net-im/pidgin-9999      Not written yet
+net-irc/irssi-9999      Not written yet
 sys-apps/coreutils-9999 In progress
 sys-devel/binutils-9999 Not written yet
-sys-devel/gcc-9999		Not written yet	
-sys-devel/llvm-9999		Not written yet
-sys-devel/clang-9999	Not written yet
-www-client/uzbl-9999	not written yet
+sys-devel/gcc-9999      Not written yet	
+sys-devel/llvm-9999     Not written yet
+sys-devel/clang-9999    Not written yet
+www-client/uzbl-9999    Not written yet
