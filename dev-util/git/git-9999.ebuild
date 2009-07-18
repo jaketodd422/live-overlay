@@ -19,7 +19,7 @@ EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86"
 IUSE="curl cgi doc emacs gtk iconv mozsha1 perl ppcsha1 tk threads webdav xinetd cvs subversion"
 
 CDEPEND="
