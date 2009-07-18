@@ -54,34 +54,6 @@ src_compile() {
 	emake || die "emake"
 }
 
-src_test() {
-	# Non-root tests will fail if the full path isnt
-	# accessible to non-root users
-	chmod -R go-w "${WORKDIR}"
-	chmod a+rx "${WORKDIR}"
-
-	# coreutils tests like to do `mount` and such with temp dirs
-	# so make sure /etc/mtab is writable #265725
-	# make sure /dev/loop* can be mounted #269758
-	mkdir -p "${T}"/mount-wrappers
-	mkwrap() {
-		local w ww
-		for w in "$@" ; do
-			ww="${T}/mount-wrappers/${w}"
-			cat <<-EOF > "${ww}"
-				#!/bin/sh
-				exec env SANDBOX_WRITE="\${SANDBOX_WRITE}:/etc/mtab:/dev/loop" $(type -P $w) "\$@"
-			EOF
-			chmod a+rx "${ww}"
-		done
-	}
-	mkwrap mount umount
-
-	addwrite /dev/full
-	env PATH="${T}/mount-wrappers:${PATH}" \
-	emake -k check || die "make check failed"
-}
-
 src_install() {
 	emake install DESTDIR="${D}" || die
 	dodoc AUTHORS ChangeLog* NEWS README* THANKS TODO
