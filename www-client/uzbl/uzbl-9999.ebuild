@@ -11,8 +11,8 @@ HOMEPAGE="http://uzbl.org"
 EGIT_BRANCH="experimental"
 EGIT_REPO_URI="git://github.com/Dieterbe/uzbl.git"
 
-LICENSE="GPL-2"
-SLOT="2"
+LICENSE="GPL-3"
+SLOT="0"
 KEYWORDS="~x86 ~amd64"
 
 DEPEND=">=net-libs/webkit-gtk-1.1.4
@@ -35,6 +35,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install || die "Install failed!"
 	dodoc README AUTHORS
+	doicon examples/data/uzbl/uzbl.png
 }
 
 pkg_postinst() {
