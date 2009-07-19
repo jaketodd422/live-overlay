@@ -11,12 +11,12 @@ Ebuilds use EAPI 2.
 Ebuild list:
 Name                    Status
 ------------------------------
+dev-lang/clang-9999     Testing
+dev-lang/ghc-9999       Not written yet
 dev-util/git-9999       Done
 net-irc/irssi-9999      Not written yet
 sys-apps/coreutils-9999 Testing
 sys-devel/binutils-9999 Not written yet
-sys-devel/llvm-9999     Not written yet
-sys-devel/clang-9999    Not written yet
 www-client/uzbl-9999    Done
 www-client/surf-9999    Not written yet
 x11-wm/xmonad           Not written yet
