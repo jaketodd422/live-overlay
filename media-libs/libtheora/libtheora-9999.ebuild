@@ -1,0 +1,53 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+EAPI="2"
+
+inherit eutils flag-o-matic subversion
+
+DESCRIPTION="The Theora video compression codec"
+HOMEPAGE="http://theora.org"
+ESVN_REPO_URI="http://svn.xiph.org/trunk/theora/"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~x86 ~amd64"
+IUSE="encode doc"
+
+DEPEND="${RDEPEND}
+	doc? ( app-doc/doxygen )
+	dev-util/pkgconfig"
+RDEPEND="media-libs/libogg
+	encode? ( media-libs/libvorbis )"
+
+src_unpack() {
+	subversion_src_unpack
+}
+
+src_configure() {
+	use x86 && filter-flags -fforce-addr -frename-registers
+	use doc || export ac_cv_prog_HAVE_DOXYGEN="false"
+	
+	econf \
+		--disable-dependency-tracking \
+		--disable-spec \
+		$(use_enable encode) \
+		--disable-oggtest \
+		--disable-vorbistest \
+		--disable-sdltest \
+		--disable-examples \
+		--disable-valgrind-testing \
+		--enable-encode
+}
+
+src_compile() {
+	emake || die "emake failed"
+}
+
+src_install() {
+	emake DESTDIR="${D}" docdir=/usr/share/doc/${PF} \
+		install || die "emake install failed"
+
+	dodoc AUTHORS CHANGES README
+	prepalldocs
+}
