@@ -14,10 +14,10 @@ Name                    Status
 dev-lang/clang-9999            Testing
 dev-lang/ghc-9999              Not written yet
 dev-util/git-9999              Done
-media-libs/flac-9999           Not written yet
-media-libs/libogg-9999         Not written yet
-media-libs/libtheora-9999      Not written yet
-media-libs/libvorbis-9999      Not written yet
+media-libs/flac-9999           Testing
+media-libs/libogg-9999         Testing
+media-libs/libtheora-9999      Testing
+media-libs/libvorbis-9999      Testing
 media-sound/mpd-9999           Testing
 media-sound/ncmpcpp-9999       Testing
 media-sound/vorbis-tools-9999  Not written yet 
