@@ -4,7 +4,8 @@
 
 EAPI="2"
 
-inherit autotools eutils
+inherit autotools cvs eutils
+
 DESCRIPTION="free lossless audio encoder and codec"
 HOMEPAGE="http://flac.sourceforge.net"
 ECVS_SERVER="flac.cvs.sourceforge.net:/cvsroot/flac"
@@ -25,28 +26,31 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	cvs_src_unpack
-	cd "${S}"
-	AT_M4DIR="m4" eautoreconf
+	cd "${PN}"
+	#eautoreconf
+	./autogen.sh
 }
 
 src_configure() {
+	cd "${WORKDIR}/${PN}"
 	econf $(use_enable ogg) \
 		$(use_enable sse) \
 		$(use_enable 3dnow) \
 		$(use_enable altivec) \
 		$(use_enable debug) \
 		$(use_enable cxx cpplibs) \
-		--disable-examples \
 		--disable-doxygen-docs \
 		--disable-dependency-tracking \
 		--disable-xmms-plugin
 }
 
 src_compile() {
+	cd "${WORKDIR}/${PN}"
 	emake || die "emake failed"
 }
 
 src_install() {
+	cd "${WORKDIR}/${PN}"
 	emake DESTDIR="${D}" install || die "emake install failed."
 
 	rm -rf "${D}"/usr/share/doc/${P}
