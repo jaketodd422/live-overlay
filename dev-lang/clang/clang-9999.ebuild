@@ -4,7 +4,7 @@ inherit eutils subversion
 
 DESCRIPTION="Clang C/C++ compiler"
 HOMEPAGE="http://clang.llvm.org"
-IUSE="alltargets debug profile"
+IUSE="alltargets debug doc profile"
 KEYWORDS="~x86 ~amd64"
 LICENSE="UoI-NCSA"
 SLOT="0"
@@ -67,6 +67,13 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
+	
+	if use doc; then
+		dodoc "${D}/docs"
+	else
+		rm -rf "${D}/docs"
+	fi
+
 	cd "${S}/tools/clang"
 	emake DESTDIR="${D}" install || die "emake install failed"
 }
