@@ -24,7 +24,7 @@ dread    media-libs/libvorbis-9999      Testing
 dread    media-sound/mpd-9999           Testing
 dread    media-sound/ncmpcpp-9999       Testing
 dread    media-sound/vorbis-tools-9999  Not written yet 
-dread    sys-apps/coreutils-9999        Testing
+dread    sys-apps/coreutils-9999        Masked
 dread    www-client/uzbl-9999           Done
 dread    x11-wm/xmonad                  Not written yet
 dread    x11-wm/xmonad-contrib          Not written yet
