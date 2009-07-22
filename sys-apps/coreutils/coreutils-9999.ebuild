@@ -30,13 +30,19 @@ RDEPEND="caps? ( sys-libs/libcap )
 	!<sci-chemistry/ccp4-6.1.1
 	>=sys-libs/ncurses-5.3-r5"
 DEPEND="${RDEPEND}
-	app-arch/lzma-utils"
+	app-arch/lzma-utils
+	dev-util/gperf"
 
 src_unpack() {
 	git_src_unpack
 }
 
 src_configure() {
+	cd "${WORKDIR}/${P}"
+	
+	# cheap hack until I figure out what to do
+	./bootstrap
+
 	use static && append-ldflags -static
 	econf \
 		--enable-install-program="arch" \
@@ -51,6 +57,8 @@ src_configure() {
 }
 
 src_compile() {
+	cd "${WORKDIR}/${P}"
+	
 	emake || die "emake"
 }
 
