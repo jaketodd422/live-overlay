@@ -1,0 +1,2 @@
+# Broken ebuild
+=sys-apps/coreutils-9999
