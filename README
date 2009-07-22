@@ -6,22 +6,25 @@ All of the ebuilds here have an active upstream and are not going to be patched.
 There's no reason to patch a piece of software that has an active upstream, as
 it is constantly changing.
 
-Ebuilds use EAPI 2.
+Ebuilds use EAPI 2. Use src_configure for econf, if use blah, et cetera. Add
+*highly* experimental software to profiles/package.mask. When pushing commits,
+update the README and commit it, then update the ebuild and manifest and commit
+them. Test your ebuilds before submitting them.
 
 Ebuild list:
-Name                    Status
-------------------------------
-dev-lang/clang-9999            Testing
-dev-lang/ghc-9999              Not written yet
-dev-util/git-9999              Done
-media-libs/flac-9999           Testing
-media-libs/libogg-9999         Testing
-media-libs/libtheora-9999      Testing
-media-libs/libvorbis-9999      Testing
-media-sound/mpd-9999           Testing
-media-sound/ncmpcpp-9999       Testing
-media-sound/vorbis-tools-9999  Not written yet 
-sys-apps/coreutils-9999        Testing
-www-client/uzbl-9999           Done
-x11-wm/xmonad                  Not written yet
-x11-wm/xmonad-contrib          Not written yet
+Owner    Name                           Status
+---------------------------------------------
+dread    dev-lang/clang-9999            Testing
+dread    dev-lang/ghc-9999              Not written yet
+dread    dev-util/git-9999              Done
+dread    media-libs/flac-9999           Testing
+dread    media-libs/libogg-9999         Testing
+dread    media-libs/libtheora-9999      Testing
+dread    media-libs/libvorbis-9999      Testing
+dread    media-sound/mpd-9999           Testing
+dread    media-sound/ncmpcpp-9999       Testing
+dread    media-sound/vorbis-tools-9999  Not written yet 
+dread    sys-apps/coreutils-9999        Testing
+dread    www-client/uzbl-9999           Done
+dread    x11-wm/xmonad                  Not written yet
+dread    x11-wm/xmonad-contrib          Not written yet
