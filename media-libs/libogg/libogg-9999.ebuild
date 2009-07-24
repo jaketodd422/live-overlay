@@ -23,7 +23,7 @@ src_unpack() {
 }
 
 src_configure() {
-	./autogen.sh
+	./autogen.sh --prefix=/usr
 }
 
 src_compile() {
