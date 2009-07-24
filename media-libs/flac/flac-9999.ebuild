@@ -28,7 +28,7 @@ src_unpack() {
 	cvs_src_unpack
 	cd "${PN}"
 	#eautoreconf
-	./autogen.sh
+	#./autogen.sh
 }
 
 src_configure() {
