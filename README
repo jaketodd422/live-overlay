@@ -18,7 +18,7 @@ dread    dev-lang/clang-9999            Testing
 dread    dev-lang/ghc-9999              Not written yet
 dread    dev-util/git-9999              Done
 dread    media-libs/flac-9999           Testing
-dread    media-libs/libogg-9999         Testing
+dread    media-libs/libogg-9999         Done
 dread    media-libs/libtheora-9999      Testing
 dread    media-libs/libvorbis-9999      Testing
 dread    media-sound/mpd-9999           Testing
