@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit eutils git
+inherit eutils git flag-o-matic
 DESCRIPTION="The Music Player Daemon (MPD)"
 HOMEPAGE="http://musicpd.org"
 
