@@ -55,6 +55,8 @@ pkg_setup() {
 }
 
 src_configure() {
+	cd "${WORKDIR}/${P}"
+
 	eautoreconf
 
 	local mpdconf="--enable-tcp --enable-un --disable-wildmidi
@@ -115,6 +117,8 @@ src_configure() {
 }
 
 src_compile() {
+	cd "${WORKDIR}/${P}"
+
 	emake || die "emake failed"
 }
 
