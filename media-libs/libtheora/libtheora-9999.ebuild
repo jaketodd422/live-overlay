@@ -1,6 +1,7 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
 EAPI="2"
 
 inherit eutils flag-o-matic subversion
@@ -25,10 +26,15 @@ src_unpack() {
 }
 
 src_configure() {
+	cd "${WORKDIR}/${P}"
+	
+	./autogen.sh
+
 	use x86 && filter-flags -fforce-addr -frename-registers
 	use doc || export ac_cv_prog_HAVE_DOXYGEN="false"
 	
 	econf \
+		--prefix=/usr
 		--disable-dependency-tracking \
 		--disable-spec \
 		$(use_enable encode) \
@@ -41,6 +47,8 @@ src_configure() {
 }
 
 src_compile() {
+	cd "${WORKDIR}/${P}"
+
 	emake || die "emake failed"
 }
 
