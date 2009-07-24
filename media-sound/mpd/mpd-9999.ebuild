@@ -57,10 +57,10 @@ pkg_setup() {
 src_configure() {
 	cd "${WORKDIR}/${P}"
 
-	eautoreconf
+	./autogen.sh
 
 	local mpdconf="--enable-tcp --enable-un --disable-wildmidi
---disable-libOggFlackTest --disable-documentation"
+ --disable-documentation"
 
 	if use network; then
 		mpdconf+="--enable-shout $(use_enable vorbis vorbis-encoder)
