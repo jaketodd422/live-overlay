@@ -4,11 +4,12 @@
 
 EAPI="2"
 
-inherit autotools eutils git
+inherit git
 
 DESCRIPTION="An ncurses mpd client, ncmpc clone with some new features, written in C++"
 HOMEPAGE="http://unkart.ovh.org/ncmpcpp"
 EGIT_REPO_URI="git://repo.or.cz/ncmpcpp.git"
+EGIT_BOOTSTRAP="autogen.sh"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,34 +27,15 @@ src_unpack() {
 }
 
 src_configure() {
-	einfo "Running autogen.sh..."
-	./autogen.sh
-
-	local localconf
-
-	if use clock; then
-		localconf="--enable-clock"
-	else
-		localconf="--disable-clock"
-	fi
-
-	if use outputs; then
-		localconf="--enable-outputs"
-	else
-		localconf="--disable-outputs"
-	fi
+	git_bootstrap
 	
-	if use taglib; then
-		localconf="--with-taglib"
-	else
-		localconf="--without-taglib"
-	fi
-
-
-	econf \
-		$(use_enable curl) \
-		$(use_enable threads) \
-		${localconf}
+	econf $(use_enable outputs) \
+		$(use_enable clock) \
+		$(use_enable unicode) \
+		$(use_with curl) \
+		$(use_with iconv) \
+		$(use_with threads) \
+		$(use_with taglib) 
 }
 
 src_compile() {
