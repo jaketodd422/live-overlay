@@ -4,11 +4,12 @@
 
 EAPI="2"
 
-inherit eutils subversion
+inherit subversion
 
 DESCRIPTION="the Ogg media file format library"
 HOMEPAGE="http://xiph.org/ogg"
 ESVN_REPO_URI="http://svn.xiph.org/trunk/ogg/"
+ESVN_BOOTSTRAP="autogen.sh"
 
 LICENSE="BSD"
 SLOT="0"
@@ -23,7 +24,7 @@ src_unpack() {
 }
 
 src_configure() {
-	./autogen.sh --prefix=/usr
+	subversion_bootstrap
 }
 
 src_compile() {
