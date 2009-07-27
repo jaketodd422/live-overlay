@@ -8,8 +8,8 @@ inherit cvs
 
 DESCRIPTION="LAME Ain't an MP3 Encoder"
 HOMEPAGE="http://lame.sourceforge.net"
-ECVS_SERVER="lame.cvs.sourceforge.net"
-ECVS_MODULE="lame.cvs.sourceforge.net:/cvsroot/lame"
+ECVS_SERVER="lame.cvs.sourceforge.net:/cvsroot/lame"
+ECVS_MODULE="lame"
 ECVS_AUTH="pserver"
 ECVS_USER="anonymous"
 
@@ -19,7 +19,7 @@ KEYWORDS="~x86 ~amd64"
 IUSE="mmx debug sndfile"
 
 DEPEND="${RDEPEND}
-		dev-util/pkg-config
+		dev-util/pkgconfig
 		mmx? ( dev-lang/nasm )"
 RDEPEND="sys-libs/ncurses
 		sndfile? ( media-libs/libsndfile )"
