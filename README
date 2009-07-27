@@ -23,7 +23,7 @@ dread    media-libs/flac-9999           Testing
 dread    media-libs/libogg-9999         Done
 dread    media-libs/libtheora-9999      Done
 dread    media-libs/libvorbis-9999      Done
-dread    media-sound/lame-9999          Testing
+dread    media-sound/lame-9999          Done
 dread    media-sound/mpd-9999           Done
 dread    media-sound/ncmpcpp-9999       Done
 dread    media-sound/vorbis-tools-9999  Not written yet 
