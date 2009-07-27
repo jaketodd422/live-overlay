@@ -4,11 +4,13 @@
 
 EAPI="2"
 
-inherit eutils git flag-o-matic
+inherit git flag-o-matic
+
 DESCRIPTION="The Music Player Daemon (MPD)"
 HOMEPAGE="http://musicpd.org"
-
 EGIT_REPO_URI="git://git.musicpd.org/master/mpd.git"
+EGIT_BOOTSTRAP="autogen.sh"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
@@ -54,10 +56,14 @@ pkg_setup() {
 	enewuser mpd "" "" "/var/lib/mpd" audio
 }
 
+src_unpack() {
+	git_src_unpack
+}
+
 src_configure() {
 	cd "${WORKDIR}/${P}"
 
-	./autogen.sh
+	git_bootstrap
 
 	local mpdconf="--enable-tcp --enable-un --disable-wildmidi
  --disable-documentation"
