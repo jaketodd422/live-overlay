@@ -15,6 +15,7 @@ Ebuild list:
 Owner    Name                           Status
 ---------------------------------------------
 dread    app-editors/vim-9999           Not written yet
+dread    app-portage/eix-9999           Testing
 dread    dev-lang/clang-9999            Testing
 dread    dev-lang/ghc-9999              Not written yet
 dread    dev-util/git-9999              Done
