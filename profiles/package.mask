@@ -1,2 +1,5 @@
-# Broken ebuild
+# Broken install stage in upstream, dread 27.07.09
+=media-libs/flac-9999
+
+# Broken ebuild, dread 27.07.09
 =sys-apps/coreutils-9999
