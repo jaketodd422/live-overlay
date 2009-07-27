@@ -9,6 +9,7 @@ inherit eutils flag-o-matic subversion
 DESCRIPTION="The Theora video compression codec"
 HOMEPAGE="http://theora.org"
 ESVN_REPO_URI="http://svn.xiph.org/trunk/theora/"
+ESVN_BOOTSTRAP="autogen.sh"
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,7 +29,7 @@ src_unpack() {
 src_configure() {
 	cd "${WORKDIR}/${P}"
 	
-	./autogen.sh
+	subversion_bootstrap
 
 	use x86 && filter-flags -fforce-addr -frename-registers
 	use doc || export ac_cv_prog_HAVE_DOXYGEN="false"
