@@ -34,6 +34,8 @@ src_configure() {
 		lameconf="--with-fileio=sndfile"
 	fi
 
+	cd "${PN}"
+
 	econf \
 		--prefix=/usr \
 		--disable-frontend \
@@ -45,9 +47,11 @@ src_configure() {
 }
 
 src_compile() {
+	cd "${WORKDIR}/${PN}"
 	emake || die "emake failed"
 }
 
 src_install() {
+	cd "${WORKDIR}/${PN}"
 	emake DESTDIR="${D}" install || die "emake install failed"
 }
