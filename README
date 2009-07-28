@@ -26,7 +26,7 @@ dread    media-libs/libvorbis-9999      Done
 dread    media-sound/lame-9999          Done
 dread    media-sound/mpd-9999           Done
 dread    media-sound/ncmpcpp-9999       Done
-dread    media-sound/vorbis-tools-9999  Not written yet 
+dread    media-sound/vorbis-tools-9999  Done 
 dread    sys-apps/coreutils-9999        Masked
 dread    www-client/uzbl-9999           Done
 dread    x11-wm/xmonad                  Not written yet
