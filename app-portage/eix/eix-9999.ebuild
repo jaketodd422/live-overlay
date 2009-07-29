@@ -57,7 +57,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
 
-	dodoc AUTHROS ChangeLog doc/format.txt
+	dodoc AUTHORS ChangeLog doc/format.txt
 	use doc && dodoc doc/format.html
 }
 
