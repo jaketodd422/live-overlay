@@ -63,8 +63,6 @@ src_unpack() {
 src_configure() {
 	cd "${WORKDIR}/${P}"
 
-	git_bootstrap
-
 	local mpdconf="--enable-tcp --enable-un --disable-wildmidi
  --disable-documentation"
 
