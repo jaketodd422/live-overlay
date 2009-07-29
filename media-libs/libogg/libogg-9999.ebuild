@@ -23,10 +23,6 @@ src_unpack() {
 	subversion_src_unpack
 }
 
-src_configure() {
-	subversion_bootstrap
-}
-
 src_compile() {
 	emake || die "emake failed"
 }
