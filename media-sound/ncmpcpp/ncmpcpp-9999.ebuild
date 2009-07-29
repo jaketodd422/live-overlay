@@ -27,8 +27,6 @@ src_unpack() {
 }
 
 src_configure() {
-	git_bootstrap
-	
 	econf $(use_enable outputs) \
 		$(use_enable clock) \
 		$(use_enable unicode) \
