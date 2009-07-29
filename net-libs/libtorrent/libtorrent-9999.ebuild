@@ -25,8 +25,6 @@ src_unpack() {
 }
 
 src_configure() {
-	subversion_bootstrap
-
 	econf \
 	$(use_enable debug debug werror) \
 	$(use_enable ipv6)
