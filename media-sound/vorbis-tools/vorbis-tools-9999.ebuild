@@ -29,8 +29,6 @@ src_unpack() {
 }
 
 src_configure() {
-	subversion_bootstrap
-
 	econf \
 		$(use_with flac) \
 		$(use_enable nls) \
