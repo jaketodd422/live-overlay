@@ -29,8 +29,6 @@ src_unpack() {
 src_configure() {
 	cd "${WORKDIR}/${P}"
 	
-	subversion_bootstrap
-
 	use x86 && filter-flags -fforce-addr -frename-registers
 	use doc || export ac_cv_prog_HAVE_DOXYGEN="false"
 	
