@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.8 2009/05/10 02:33:58 robbat2 Exp $
 
-EAPI=2
+EAPI="2"
 
 inherit toolchain-funcs eutils elisp-common perl-module bash-completion git
 
@@ -40,10 +40,15 @@ RDEPEND="${CDEPEND}
 			dev-perl/Net-SMTP-SSL
 			dev-perl/Authen-SASL
 			cgi? ( virtual/perl-CGI )
-			cvs? ( >=dev-util/cvsps-2.1 dev-perl/DBI dev-perl/DBD-SQLite )
-			subversion? ( dev-util/subversion[-dso] dev-perl/libwww-perl dev-perl/TermReadKey )
+			cvs? ( >=dev-util/cvsps-2.1
+			dev-perl/DBI
+			dev-perl/DBD-SQLite )
+			subversion? ( dev-util/subversion[-dso]
+						dev-perl/libwww-perl
+						dev-perl/TermReadKey )
 			)
-	gtk?  ( >=dev-python/pygtk-2.8 dev-python/gtksourceview-python )"
+	gtk?  ( >=dev-python/pygtk-2.8
+			dev-python/gtksourceview-python )"
 
 DEPEND="${CDEPEND}"
 
@@ -97,21 +102,13 @@ exportmakeopts() {
 }
 
 src_unpack() {
-	if [ "${PV}" != "9999" ]; then
-		unpack ${MY_P}.tar.bz2
-		cd "${S}"
-		unpack ${PN}-manpages-${DOC_VER}.tar.bz2
-		use doc && \
-			cd "${S}"/Documentation && \
-			unpack ${PN}-htmldocs-${DOC_VER}.tar.bz2
-		cd "${S}"
-	else
-		git_src_unpack
-		cd "${S}"
-		unpack ${PN}-manpages-1.6.3.tar.bz2
-		#cp "${FILESDIR}"/GIT-VERSION-GEN .
-	fi
-
+	unpack ${MY_P}.tar.bz2
+	cd "${S}"
+	unpack ${PN}-manpages-${DOC_VER}.tar.bz2
+	use doc && \
+		cd "${S}"/Documentation && \
+		unpack ${PN}-htmldocs-${DOC_VER}.tar.bz2
+	cd "${S}"
 }
 
 src_prepare() {
@@ -122,7 +119,6 @@ src_prepare() {
 		-e 's:^\(AR = \).*$:\1$(OPTAR):' \
 		Makefile || die "sed failed"
 
-	# Fix docbook2texi command
 	sed -i 's/DOCBOOK2X_TEXI=docbook2x-texi/DOCBOOK2X_TEXI=docbook2texi.pl/' \
 		Documentation/Makefile || die "sed failed"
 }
@@ -157,7 +153,7 @@ src_compile() {
 			|| die "emake gitweb/gitweb.cgi failed"
 	fi
 
-	if [[ "$PV" == "9999" ]] && use doc; then
+	if use doc; then
 		cd Documentation
 		git_emake man info html \
 			|| die "emake man html info failed"
