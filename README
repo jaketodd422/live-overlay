@@ -5,8 +5,8 @@ the most.
 All of the ebuilds here have an active upstream and are most likely not going to
 be patched, mostly because it's a pain.
 
-Ebuilds use EAPI 2. Use src_configure for econf, if use blah, et cetera. Add
-*highly* experimental software to profiles/package.mask. 
+Ebuilds use EAPI 2. Use src_configure for econf, et cetera (read the gentoo dev
+handbooks). Add *highly* experimental software to profiles/package.mask. 
 
 When pushing commits, update and commit the README, then update and commit the
 updated ebuild and manifest. Remember test your ebuilds before submitting them.
