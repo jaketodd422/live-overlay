@@ -17,6 +17,7 @@ Owner    Name                           Status
 dread    app-portage/eix-9999           Done
 dread    dev-lang/clang-9999            Testing
 dread    dev-lang/ghc-9999              Not written yet
+dread    dev-libs/glib-9999             Masked
 dread    dev-util/git-9999              Done
 dread    games-fps/darkplaces-9999      Done
 dread    media-libs/flac-9999           Masked
@@ -31,5 +32,6 @@ dread    net-libs/libtorrent-9999       Done
 dread    net-p2p/rtorrent-9999          Done
 dread    sys-apps/coreutils-9999        Masked
 dread    www-client/uzbl-9999           Done
+dread    x11-libs/gtk+-9999             Masked
 dread    x11-wm/xmonad                  Not written yet
 dread    x11-wm/xmonad-contrib          Not written yet
