@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.8 2009/05/10 02:33:58 robbat2 Exp $
+# $Header: $
 
 EAPI="2"
 
@@ -22,9 +22,9 @@ CDEPEND="
 	dev-libs/openssl
 	sys-libs/zlib
 	app-arch/cpio
-	perl?   ( dev-lang/perl )
-	tk?     ( dev-lang/tk )
-	curl?   (
+	perl? ( dev-lang/perl )
+	tk?   ( dev-lang/tk )
+	curl? (
 		net-misc/curl
 		webdav? ( dev-libs/expat )
 	)
@@ -193,11 +193,6 @@ src_install() {
 	newbin contrib/fast-import/import-tars.perl import-tars
 
 	dodir /usr/share/${PN}/contrib
-	# The following are excluded:
-	# svnimport - use git-svn
-	# p4import - excluded because fast-import has a better one
-	# examples - these are stuff that is not used in Git anymore actually
-	# patches - stuff the Git guys made to go upstream to other places
 	for i in continuous fast-import hg-to-git \
 		hooks remotes2config.sh stats \
 		workdir convert-objects blameview ; do
@@ -240,66 +235,6 @@ src_install() {
 	newconfd "${FILESDIR}"/git-daemon.confd git-daemon
 
 	fixlocalpod
-}
-
-src_test() {
-	local disabled=""
-	local tests_cvs="t9200-git-cvsexportcommit.sh \
-					t9400-git-cvsserver-server.sh \
-					t9600-cvsimport.sh"
-	local tests_perl="t5502-quickfetch.sh \
-					t5512-ls-remote.sh \
-					t5520-pull.sh"
-
-	# Unzip is used only for the testcase code, not by any normal parts of Git.
-	if ! has_version app-arch/unzip ; then
-		einfo "Disabling tar-tree tests"
-		disabled="${disabled} t5000-tar-tree.sh"
-	fi
-
-	cvs=0
-	use cvs && let cvs=$cvs+1
-	if ! has userpriv "${FEATURES}"; then
-		if [[ $cvs -eq 1 ]]; then
-			ewarn "Skipping CVS tests because CVS does not work as root!"
-			ewarn "You should retest with FEATURES=userpriv!"
-			disabled="${disabled} ${tests_cvs}"
-		fi
-		# Bug #225601 - t0004 is not suitable for root perm
-		# Bug #219839 - t1004 is not suitable for root perm
-		disabled="${disabled} t0004-unwritable.sh t1004-read-tree-m-u-wf.sh"
-	else
-		[[ $cvs -gt 0 ]] && \
-			has_version dev-util/cvs && \
-			let cvs=$cvs+1
-		[[ $cvs -gt 0 ]] && \
-			built_with_use dev-util/cvs server && \
-			let cvs=$cvs+1
-		if [[ $cvs -lt 3 ]]; then
-			einfo "Disabling CVS tests (needs dev-util/cvs[USE=server])"
-			disabled="${disabled} ${tests_cvs}"
-		fi
-	fi
-
-	if ! use perl ; then
-		einfo "Disabling tests that need Perl"
-		disabled="${disabled} ${tests_perl}"
-	fi
-
-	# Reset all previously disabled tests
-	cd "${S}/t"
-	for i in *.sh.DISABLED ; do
-		[[ -f "${i}" ]] && mv -f "${i}" "${i%.DISABLED}"
-	done
-	einfo "Disabled tests:"
-	for i in ${disabled} ; do
-		[[ -f "${i}" ]] && mv -f "${i}" "${i}.DISABLED" && einfo "Disabled $i"
-	done
-	cd "${S}"
-	# Now run the tests
-	einfo "Start test run"
-	git_emake \
-		test || die "tests failed"
 }
 
 showpkgdeps() {
