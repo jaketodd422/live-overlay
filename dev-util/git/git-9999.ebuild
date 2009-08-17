@@ -6,11 +6,6 @@ EAPI="2"
 
 inherit toolchain-funcs eutils elisp-common perl-module bash-completion git
 
-MY_PV="${PV/_rc/.rc}"
-MY_P="${PN}-${MY_PV}"
-
-DOC_VER=${MY_PV}
-
 DESCRIPTION="GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team"
 HOMEPAGE="http://www.git-scm.com/"
 SRC_URI="mirror://kernel/software/pub/scm/git/${PN}-manpages-1.6.4.tar.bz2"
@@ -102,12 +97,12 @@ exportmakeopts() {
 }
 
 src_unpack() {
-	unpack ${MY_P}.tar.bz2
+	git_src_unpack
 	cd "${S}"
-	unpack ${PN}-manpages-${DOC_VER}.tar.bz2
+	unpack ${PN}-manpages-1.6.4.tar.bz2
 	use doc && \
 		cd "${S}"/Documentation && \
-		unpack ${PN}-htmldocs-${DOC_VER}.tar.bz2
+		unpack ${PN}-htmldocs-1.6.4.tar.bz2
 	cd "${S}"
 }
 
