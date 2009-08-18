@@ -1,15 +1,19 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
 EAPI="2"
 
 inherit eutils subversion
 
 DESCRIPTION="Clang C/C++ compiler"
 HOMEPAGE="http://clang.llvm.org"
-IUSE="alltargets debug doc profile"
-KEYWORDS="~x86 ~amd64"
+ESVN_REPO_URI="svn://llvm.org/svn/llvm-project/llvm/trunk"
+
 LICENSE="UoI-NCSA"
 SLOT="0"
-
-ESVN_REPO_URI="svn://llvm.org/svn/llvm-project/llvm/trunk"
+KEYWORDS="~x86"
+IUSE="alltargets debug doc profile"
 
 DEPEND="dev-lang/perl
 		dev-util/subversion
