@@ -16,8 +16,8 @@ SRC_URI="lights? ( http://www.fuhquake.net/files/extras/${MY_LIGHTS}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="alsa cdinstall cdsound debug dedicated demo lights opengl oss sdl textures"
+KEYWORDS="~x86"
+IUSE="alsa cdinstall cdsound dedicated demo lights opengl oss sdl textures"
 
 UIRDEPEND="media-libs/jpeg
 	media-libs/libogg
@@ -107,7 +107,14 @@ src_compile() {
 	opts="${opts} DP_SOUND_API=${sound_api}"
 
 	local type="release"
-	use debug && type="debug"
+	
+	sed -i \
+		-e 's/OPTIM_RELEASE=-O2 -fno-strict-aliasing \
+		$(CPUOPTIMIZATIONS)/OPTIM_RELEASE=${CFLAGS}/g' \
+		-e 's/LDFLAGS_RELEASE=$(OPTIM_RELEASE) -DSVNREVISION=`test -d .svn && \
+		svnversion || echo -` -DBUILDTYPE=release/LDFLAGS_RELEASE= ${LDFLAGS}/g' \
+		-e 's/-I\/usr\/X11R6\/include/-I\/usr\/include\/X11/g' \
+		makefile.inc
 
 	# Only compile a maximum of 1 client
 	if use sdl ; then
