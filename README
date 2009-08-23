@@ -22,7 +22,14 @@ dread    dev-util/git-9999              Done
 dread    games-fps/darkplaces-9999      Done
 dread    games-fps/                     
          quake1-textures-20071001       Done
+dread    media-libs/babl-9999           Undecided
+dread    media-libs/faac-9999           Undecided
+dread    media-libs/faad2-9999          Undecided
 dread    media-libs/flac-9999           Masked
+dread    media-libs/freetype-9999       Not written yet
+dread    media-libs/gegl-9999           Undecided
+dread    media-libs/libdvdcss-9999      Not written yet
+dread    media-libs/libmad-9999         Not written yet
 dread    media-libs/libogg-9999         Done
 dread    media-libs/libtheora-9999      Done
 dread    media-libs/libvorbis-9999      Done
