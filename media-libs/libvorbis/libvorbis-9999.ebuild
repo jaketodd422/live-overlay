@@ -22,9 +22,11 @@ src_unpack() {
 	subversion_src_unpack
 }
 
-src_configure() {
+src_prepare() {
 	AT_M4DIR="m4" eautoreconf
+}
 
+src_configure() {
 	econf --disable-docs --disable-oggtest
 }
 
