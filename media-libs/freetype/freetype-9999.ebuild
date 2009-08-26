@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://git.sv.nongnu.org/freetype/freetype2.git"
 EGIT_BOOTSTRAP="autogen.sh"
 
 LICENSE="FTL GPL-2"
-SLOT="0"
+SLOT="2"
 KEYWORDS="~x86"
 IUSE="X debug doc fontforge"
 
@@ -26,7 +26,15 @@ src_unpack() {
 	git_src_unpack
 }
 
+src_prepare() {
+	chmod +x autogen.sh configure
+
+	git_bootstrap
+}
+
 src_configure() {
+	cd "${WORKDIR}/${P}"
+
 	enable_option() {
 		sed -i -e "/#define $1/a #define $1" \
 			include/freetype/config/ftoption.h \
