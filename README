@@ -26,7 +26,7 @@ dread    media-libs/babl-9999           Undecided
 dread    media-libs/faac-9999           Undecided
 dread    media-libs/faad2-9999          Undecided
 dread    media-libs/flac-9999           Masked
-dread    media-libs/freetype-9999       Not written yet
+dread    media-libs/freetype-9999       Testing
 dread    media-libs/gegl-9999           Undecided
 dread    media-libs/libdvdcss-9999      Not written yet
 dread    media-libs/libmad-9999         Not written yet
