@@ -13,7 +13,7 @@ ESVN_BOOTSTRAP="autogen.sh"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND=""

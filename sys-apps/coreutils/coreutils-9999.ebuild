@@ -13,7 +13,7 @@ EGIT_REPO_URI="git://git.savannah.gnu.org/coreutils.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE="acl caps gmp nls static xattr"
 
 RDEPEND="caps? ( sys-libs/libcap )

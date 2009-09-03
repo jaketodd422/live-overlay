@@ -9,7 +9,6 @@ inherit mercurial
 DESCRIPTION="Plan 9 from User Space"
 HOMEPAGE="http://swtch.com/plan9port"
 EHG_REPO_URI="http://code.swtch.com/plan9port"
-EHG_PROJECT="plan9"
 
 LICENSE="MIT"
 SLOT="0"

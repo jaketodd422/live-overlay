@@ -12,7 +12,7 @@ ESVN_REPO_URI="http://svn.xiph.org/trunk/vorbis/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="dev-util/pkgconfig"
@@ -25,7 +25,10 @@ src_unpack() {
 src_prepare() {
 	AT_M4DIR="m4" eautoreconf
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> experimental
 src_configure() {
 	econf --disable-docs --disable-oggtest
 }
