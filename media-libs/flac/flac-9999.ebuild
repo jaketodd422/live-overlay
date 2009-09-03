@@ -15,7 +15,7 @@ ECVS_USER="anonymous"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE="3dnow altivec +cxx debug doc +ogg sse"
 
 RDEPEND="ogg? ( >=media-libs/libogg-1.1.3 )"

@@ -13,7 +13,7 @@ EGIT_REPO_URI="git://github.com/Dieterbe/uzbl.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 
 DEPEND=">=net-libs/webkit-gtk-1.1.4
 		net-libs/libsoup

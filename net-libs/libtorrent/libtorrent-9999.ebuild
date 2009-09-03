@@ -13,7 +13,7 @@ ESVN_BOOTSTRAP="autogen.sh"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE="debug ipv6"
 
 DEPEND="${RDEPEND}

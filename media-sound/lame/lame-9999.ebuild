@@ -15,7 +15,7 @@ ECVS_USER="anonymous"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE="mmx debug sndfile"
 
 DEPEND="${RDEPEND}
