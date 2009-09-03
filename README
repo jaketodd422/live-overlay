@@ -19,6 +19,7 @@ dread    dev-lang/clang-9999            Testing
 dread    dev-lang/ghc-9999              Not written yet
 dread    dev-libs/glib-9999             Masked
 dread    dev-util/git-9999              Done
+dread    dev-util/plan9port-9999        Testing
 dread    games-fps/darkplaces-9999      Done
 dread    games-fps/                     
          quake1-textures-20071001       Done
