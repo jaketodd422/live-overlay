@@ -15,10 +15,10 @@ ESVN_BOOTSTRAP="autogen.sh"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="doc nls seperate sqlite"
+IUSE="doc nls separate sqlite"
 
 DEPEND="${RDEPEND}
-		app-arch/lzma-utils
+		app-arch/xz-utils
 		doc? ( dev-python/docutils )
 		nls? ( sys-devel/gettext )"
 RDEPEND="sqlite? ( dev-db/sqlite )
@@ -27,6 +27,10 @@ RDEPEND="sqlite? ( dev-db/sqlite )
 
 src_unpack() {
 	subversion_src_unpack
+}
+
+src_prepare() {
+	subversion_bootstrap
 }
 
 src_configure() {
