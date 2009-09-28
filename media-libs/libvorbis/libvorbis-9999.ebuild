@@ -25,10 +25,7 @@ src_unpack() {
 src_prepare() {
 	AT_M4DIR="m4" eautoreconf
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> experimental
 src_configure() {
 	econf --disable-docs --disable-oggtest
 }
