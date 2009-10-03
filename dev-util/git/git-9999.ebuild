@@ -54,7 +54,6 @@ DEPEND="${DEPEND}
 	)"
 
 SITEFILE=50${PN}-gentoo.el
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if ! use perl ; then
@@ -98,11 +97,13 @@ exportmakeopts() {
 
 src_unpack() {
 	git_src_unpack
+
 	cd "${S}"
-	unpack ${PN}-manpages-1.6.4.tar.bz2
+	unpack ${PN}-manpages-1.6.5.rc2.tar.bz2
+
 	use doc && \
 		cd "${S}"/Documentation && \
-		unpack ${PN}-htmldocs-1.6.4.tar.bz2
+		unpack ${PN}-htmldocs-1.6.5.rc5.tar.bz2
 	cd "${S}"
 }
 
