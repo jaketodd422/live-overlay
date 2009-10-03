@@ -34,22 +34,24 @@ src_prepare() {
 }
 
 src_configure() {
+	local eixconf
+
 	if use seperate; then
 		eixconf="--enable-seperate-binaries --enable-seperate-update
-		--enable-seperate-tools"
+		--enable-seperate-tools --enable-obsolete-reminder
+		--enable-obsolete-symlinks"
 	else
 		eixconf="--disable-seperate-binaries --disable-seperate-update
-		--disable-seperate-tools"
+		--disable-seperate-tools --disable-obsolete-reminder
+		--disable-obsolete-symlinks"
 	fi
 
-	econf --with-bzip2 \
-	$(use_with doc rst) \
+	econf \
 	$(use_enable nls) \
-	#$(use_enable seperate seperate-binaries) \
+	$(use_with bzip2) \
+	$(use_with doc rst) \
 	$(use_with sqlite) \
 	${eixconf} \
-	--disable-obsolete-symlinks \
-	--disable-obsolete-reminder \
 	--with-ebuild-sh="/usr/$(get_libdir)/portage/bin/ebuild.sh" \
 	--with-portage-rootpath="${ROOTPATH}"
 }
