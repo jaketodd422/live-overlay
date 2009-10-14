@@ -8,7 +8,7 @@ inherit toolchain-funcs eutils elisp-common perl-module bash-completion git
 
 DESCRIPTION="GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team"
 HOMEPAGE="http://www.git-scm.com/"
-SRC_URI="mirror://kernel/pub/software/scm/git/${PN}-manpages-1.6.5.rc2.tar.bz2"
+SRC_URI="mirror://kernel/pub/software/scm/git/${PN}-manpages-1.6.5.tar.bz2"
 EGIT_BRANCH="master"
 EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
 
