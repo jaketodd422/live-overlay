@@ -8,7 +8,7 @@ inherit eutils subversion
 
 DESCRIPTION="Clang C/C++ compiler"
 HOMEPAGE="http://clang.llvm.org"
-ESVN_REPO_URI="svn://llvm.org/svn/llvm-project/llvm/trunk"
+ESVN_REPO_URI="http://llvm.org/svn/llvm-project/llvm/trunk"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
