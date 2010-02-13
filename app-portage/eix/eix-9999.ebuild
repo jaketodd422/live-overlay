@@ -9,13 +9,13 @@ inherit subversion
 DESCRIPTION="Search and query ebuilds, portage incl. local settings, ext.
 overlays, version changes, and more"
 HOMEPAGE="http://projects.gentooexperimental.org/eix"
-ESVN_REPO_URI="https://svn.gentooexperimental.org/eix/trunk"
+ESVN_REPO_URI="https://svn.gentooexperimental.org/eix"
 ESVN_BOOTSTRAP="autogen.sh"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="doc nls separate sqlite"
+IUSE="bzip2 doc nls optimization rpath strong-optimization separate sqlite"
 
 DEPEND="${RDEPEND}
 		app-arch/xz-utils
@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 RDEPEND="sqlite? ( dev-db/sqlite )
 		 nls? ( virtual/libintl )
 		 app-arch/bzip2"
+
+S="${WORKDIR}/${P}/trunk/trunk"
 
 src_unpack() {
 	subversion_src_unpack
@@ -47,7 +49,10 @@ src_configure() {
 	fi
 
 	econf \
+	$(use_enable optimization) \
 	$(use_enable nls) \
+	$(use_enable rpath) \
+	$(use_enable strong-optimization) \
 	$(use_with bzip2) \
 	$(use_with doc rst) \
 	$(use_with sqlite) \

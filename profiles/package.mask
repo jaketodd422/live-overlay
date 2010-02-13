@@ -12,3 +12,6 @@
 
 # Needs work, dread 17.08.09
 =x11-libs/gtk+-9999
+
+# The doc bug seems to be fixed now
+=x11-libs/libX11-1.3.2-r2

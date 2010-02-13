@@ -34,15 +34,13 @@ src_configure() {
 	
 	econf \
 		--prefix=/usr
-		--disable-dependency-tracking \
 		--disable-spec \
 		$(use_enable encode) \
 		--disable-oggtest \
 		--disable-vorbistest \
 		--disable-sdltest \
 		--disable-examples \
-		--disable-valgrind-testing \
-		--enable-encode
+		--disable-valgrind-testing
 }
 
 src_compile() {

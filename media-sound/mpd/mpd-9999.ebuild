@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE="aac +alsa ao audiofile avahi bzip2 cdio cue +curl debug +fifo +ffmpeg flac
-profile +id3 ipv6 jack lame lastfmradio libmms libsamplerate +mad mikmod modplug
+profile +id3 ipv6 jack lame lastfm libmms libsamplerate +mad mikmod modplug
 musepack +network +ogg oss pipe pulseaudio sid sqlite unicode +vorbis wavpack zip"
 
 WANT_AUTOMAKE="1.10"
@@ -88,7 +88,7 @@ src_configure() {
 		$(use_enable cue) \
 		$(use_enable sqlite) \
 		$(use_enable curl) \
-		$(use_enable lastfmradio lastfm) \
+		$(use_enable lastfm) \
 		$(use_enable libmms mms) \
 		$(use_enable bzip2) \
 		$(use_enable zip) \

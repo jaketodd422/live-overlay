@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="clock curl iconv output taglib +threads unicode visualizer"
 
-DEPEND="sys-libs/ncurses[unicode?]
+DEPEND="media-libs/libmpdclient
+	sys-libs/ncurses[unicode?]
 	curl? ( net-misc/curl )
 	iconv? ( virtual/libiconv )
 	taglib? ( media-libs/taglib )
@@ -28,8 +29,8 @@ src_unpack() {
 }
 
 src_configure() {
-	econf $(use_enable output outputs) \
-		$(use_enable clock) \
+	econf $(use_enable clock) \
+		$(use_enable output outputs) \
 		$(use_enable unicode) \
 		$(use_enable visualizer ) \
 		$(use_with curl) \
