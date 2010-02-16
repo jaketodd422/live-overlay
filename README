@@ -14,7 +14,6 @@ updated ebuild and manifest. Remember test your ebuilds before submitting them.
 Ebuild list:
 Owner    Name                           Status
 ----------------------------------------------
-dread    app-portage/eix-9999           Done
 dread    dev-lang/clang-9999            Testing
 dread    dev-lang/ghc-9999              Not written yet
 dread    dev-libs/glib-9999             Masked
