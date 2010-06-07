@@ -14,13 +14,31 @@ ESVN_BOOTSTRAP="autogen.sh"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="static pic"
 
 DEPEND=""
 RDEPEND=""
 
 src_unpack() {
 	subversion_src_unpack
+}
+
+src_prepare() {
+	subversion_bootstrap
+}
+
+src_configure() {
+	conf=""
+	if use static && use !pic; then
+		conf="--enable-static --disable-shared"
+	else
+		ewarn "static and pic cannot be enabled at the same time."
+		die
+	fi
+
+	econf \
+	$(use_with pic) \
+	${conf}
 }
 
 src_compile() {
