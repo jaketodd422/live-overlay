@@ -9,11 +9,12 @@ inherit autotools subversion
 DESCRIPTION="The Ogg Vorbis sound file format library with aoTuV patch"
 HOMEPAGE="http://xiph.org/vorbis"
 ESVN_REPO_URI="http://svn.xiph.org/trunk/vorbis/"
+ESVN_BOOTSTRAP="autogen.sh"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="doc examples pic static test"
 
 DEPEND="dev-util/pkgconfig"
 RDEPEND="media-libs/libogg"
@@ -23,11 +24,24 @@ src_unpack() {
 }
 
 src_prepare() {
-	AT_M4DIR="m4" eautoreconf
+	subversion_bootstrap
 }
 
 src_configure() {
-	econf --disable-docs --disable-oggtest
+	conf=""
+	if use static && use !pic; then
+		conf="--enable-static --disable-shared"
+	else
+		ewarn "static and pic cannot be enabled at the same time."
+		die
+	fi
+
+	econf \
+	$(use_enable doc docs) \
+	$(use_enable examples) \
+	$(use_enable test oggtest) \
+	$(use_with pic) \
+	${conf}
 }
 
 src_compile() {
