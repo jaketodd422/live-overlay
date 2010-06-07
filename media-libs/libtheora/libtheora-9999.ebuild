@@ -14,7 +14,7 @@ ESVN_BOOTSTRAP="autogen.sh"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="encode doc"
+IUSE="asm doc encode examples pic static test"
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
@@ -26,21 +26,29 @@ src_unpack() {
 	subversion_src_unpack
 }
 
+src_prepare() {
+	subversion_bootstrap
+}
+
 src_configure() {
-	cd "${WORKDIR}/${P}"
-	
 	use x86 && filter-flags -fforce-addr -frename-registers
 	use doc || export ac_cv_prog_HAVE_DOXYGEN="false"
-	
+
+	conf=""
+	if use static && use !pic; then
+		conf="--enable-static --disable-shared"
+	else
+		ewarn "static and pic cannot be enabled at the same time."
+		die
+	fi
+
 	econf \
-		--prefix=/usr
-		--disable-spec \
-		$(use_enable encode) \
-		--disable-oggtest \
-		--disable-vorbistest \
-		--disable-sdltest \
-		--disable-examples \
-		--disable-valgrind-testing
+	$(use_enable encode) \
+	$(use_with pic) \
+	$(use_enable asm) \
+	$(use_enable test oggtest vorbistest sdltest valgrind-testing) \
+	$(use_enable examples) \
+	${conf}
 }
 
 src_compile() {
